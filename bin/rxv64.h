@@ -1,3 +1,5 @@
+#include <cstddef>
+#include <cstdint>
 #define NDIRECT 12
 #define BSIZE 4096
 static const size_t NOFILE = 64;

@@ -1,3 +1,4 @@
+#include <cstddef>
 void *memset(void *p, int b, size_t n);
 void *memcpy(void *d, const void *s, size_t n);
 void *memmove(void *d, const void *s, size_t n);

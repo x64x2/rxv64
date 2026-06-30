@@ -102,7 +102,7 @@ main(int argc, char *argv[])
   sb.inode_start = xuint64(2+nlog);
   sb.bmap_start = xuint64(2+nlog+ninodeblocks);
 
-  printf("nmeta %zu (boot, super, log blocks %zu inode blocks %zu, bitmap blocks %zu) blocks %zu total %llu\n",
+  printf("nmeta %zu (boot, super, log blocks %zu inode blocks %zu, bitmap blocks %zu) blocks %zu total %lu\n",
          nmeta, nlog, ninodeblocks, nbitmap, nblocks, FSSIZE);
 
   freeblock = nmeta;     // the first free block that we can allocate
@@ -171,7 +171,7 @@ void
 wsect(uint64_t sec, void *buf)
 {
   if(logsec){
-    printf("writing sector %llu\n", sec);
+    printf("writing sector %lu\n", sec);
   }
   if(lseek(fsfd, sec * BSIZE, 0) != sec * BSIZE){
     perror("lseek");
@@ -250,7 +250,7 @@ balloc(size_t used)
   for(i = 0; i < used; i++){
     buf[i/8] = buf[i/8] | (0x1 << (i%8));
   }
-  printf("balloc: write bitmap block at sector %llu\n", sb.bmap_start);
+  printf("balloc: write bitmap block at sector %lu\n", sb.bmap_start);
   wsect(sb.bmap_start, buf);
 }
 
